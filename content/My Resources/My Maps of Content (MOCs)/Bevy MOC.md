@@ -19,7 +19,8 @@ share: true
 - [[bevy render|bevy render]]
 
 
-### Shared Notes
+### Notes
+- [[../../Bevy SystemParam 入门教程：让系统与游戏世界对话|Bevy SystemParam 入门教程：让系统与游戏世界对话]]
 - [[../../My Outputs/My Blog/Bevy 0.16 速览|Bevy 0.16 速览]]
 - [[../../My Output Collections/拼图游戏|拼图游戏]]
 - [[../../My Output Collections/数据驱动游戏开发的初学者指南|数据驱动游戏开发的初学者指南]]
