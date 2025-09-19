@@ -1,13 +1,13 @@
 ---
 Status: 🌲
 tags:
-  - note
+  - output/blog
 Links:
   - "[[Bevy MOC|Bevy MOC]]"
+Created: 2025-07-10T15:25:44
 BevyVersion:
   - "0.16"
 share: true
-Created: 2025-07-10T15:25:44
 ---
 # Bevy SystemParam 入门教程：让系统与游戏世界对话
 
