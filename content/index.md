@@ -2,4 +2,4 @@
 title: index
 share: true
 ---
-![[My Home|My Home]]
+![[./My Views/My Home|My Home]]
