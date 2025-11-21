@@ -18,14 +18,14 @@ action QuickAdd: 🗺️ Create MOC Note
 
 ## By Last Modified
 
-| File                                                                             | file.mday      |
-| -------------------------------------------------------------------------------- | -------------- |
-| [[./Bevy MOC\|Bevy MOC]]                 | July 08, 2025  |
-| [[DevOps MOC\|DevOps MOC]]                                       | July 03, 2025  |
-| [[Personal Knowledge Management\|Personal Knowledge Management]] | April 23, 2024 |
-| [[Obsidian\|Obsidian]]                 | April 20, 2024 |
-| [[Productivity\|Productivity]]                                   | April 19, 2024 |
-| [[Life Design\|Life Design]]                                     | April 19, 2024 |
+| File                                                                             | file.mday         |
+| -------------------------------------------------------------------------------- | ----------------- |
+| [[./Bevy MOC\|Bevy MOC]]                 | November 21, 2025 |
+| [[DevOps MOC\|DevOps MOC]]                                       | July 03, 2025     |
+| [[Productivity\|Productivity]]                                   | July 02, 2025     |
+| [[Personal Knowledge Management\|Personal Knowledge Management]] | July 02, 2025     |
+| [[Obsidian\|Obsidian]]                 | July 02, 2025     |
+| [[Life Design\|Life Design]]                                     | July 02, 2025     |
 
 
 ## By Alphabetical
@@ -42,10 +42,10 @@ action QuickAdd: 🗺️ Create MOC Note
 
 | File                                                                             | Total Links | Outgoing | Backlinks |
 | -------------------------------------------------------------------------------- | ----------- | -------- | --------- |
-| [[./Bevy MOC\|Bevy MOC]]                 | 36          | 0        | 36        |
+| [[./Bevy MOC\|Bevy MOC]]                 | 71          | 0        | 71        |
 | [[Obsidian\|Obsidian]]                 | 24          | 4        | 20        |
 | [[Personal Knowledge Management\|Personal Knowledge Management]] | 7           | 1        | 6         |
-| [[DevOps MOC\|DevOps MOC]]                                       | 5           | 0        | 5         |
+| [[DevOps MOC\|DevOps MOC]]                                       | 6           | 0        | 6         |
 | [[Productivity\|Productivity]]                                   | 1           | 0        | 1         |
 | [[Life Design\|Life Design]]                                     | 1           | 0        | 1         |
 
