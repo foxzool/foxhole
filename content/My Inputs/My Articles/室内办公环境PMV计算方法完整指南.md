@@ -1,16 +1,16 @@
 ---
-Status: 
+Status:
 tags:
   - input/articles
-Links: 
+Links:
 Created: 2025-07-09T13:19:00
 Source:
   - ""
 Author:
   - Claude
-Collection: 
-Finished: 
-Rating: 
+Collection:
+Finished:
+Rating:
 share: true
 ---
 # 室内办公环境PMV计算方法完整指南

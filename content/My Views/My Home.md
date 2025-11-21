@@ -14,7 +14,7 @@ share: true
 - 🚧 [[My Projects|My Projects]]
 - ⛰ [[My Areas|My Areas]]
 - 📝 [[My Resources|My Resources]]
-	- 🗺️ [[My Maps of Content (MOCs)|My Maps of Content (MOCs)]]
+	- 🗺️ [[../My Resources/My Maps of Content (MOCs)/My Maps of Content (MOCs)|My Maps of Content (MOCs)]]
 - 📁 [[My Archives|My Archives]]
 ### Inputs
 - [[My Inbox|My Inbox]]
@@ -29,7 +29,7 @@ share: true
 - 🗣 [[My Meetings|My Meetings]]
 ### Ideas
 - 🌞 [[My Greenhouse|My Greenhouse]]
-- 🗺️ [[My Maps of Content (MOCs)|My Maps of Content (MOCs)]]
+- 🗺️ [[../My Resources/My Maps of Content (MOCs)/My Maps of Content (MOCs)|My Maps of Content (MOCs)]]
 ### Outputs
 - 📤 [[My Outputs|My Outputs]]
 	- 💡 [[My Blog|My Blog]]
