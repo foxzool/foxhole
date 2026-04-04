@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Obsidian
+.obsidian/
+.trash/
+
+# 其他常见忽略项
+*.tmp
+*.temp
