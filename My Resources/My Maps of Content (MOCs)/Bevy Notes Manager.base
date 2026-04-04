@@ -1,0 +1,111 @@
+summaries:
+  total_notes: values.count()
+  avg_age: values.mean().round(0)
+filters:
+  or:
+    - file.hasTag("note/bevy")
+    - file.path.contains("Bevy")
+    - file.basename.contains("bevy") || file.basename.contains("Bevy")
+formulas:
+  note_age_days: (now() - file.ctime).days
+  created_date: file.ctime.format("YYYY-MM-DD")
+  status_icon: if(Status == "🌿", "🌱 幼苗", if(Status == "🌲", "🌳 成熟", if(Status == "📝", "📝 草稿", "📄 未分类")))
+  version_display: if(BevyVersion, "v" + BevyVersion, "未指定")
+  publish_status: if(publish == true, "✅ 已发布", "🚧 未发布")
+  word_estimate: (file.size / 5).round(0)
+  tag_count: file.tags.length
+properties:
+  file.name:
+    displayName: 笔记名称
+  Status:
+    displayName: 状态
+  BevyVersion:
+    displayName: Bevy 版本
+  formula.version_display:
+    displayName: 版本
+  formula.created_date:
+    displayName: 创建日期
+  formula.note_age_days:
+    displayName: 天数
+  formula.publish_status:
+    displayName: 发布状态
+  formula.word_estimate:
+    displayName: 预估字数
+  formula.tag_count:
+    displayName: 标签数
+  Links:
+    displayName: 相关链接
+views:
+  - type: table
+    name: 📚 全部笔记
+    order:
+      - file.name
+      - formula.status_icon
+      - Status
+      - formula.version_display
+      - formula.created_date
+      - formula.note_age_days
+      - formula.publish_status
+      - formula.word_estimate
+    summaries:
+      formula.note_age_days: Average
+      formula.word_estimate: Sum
+  - type: table
+    name: 🔧 按版本分组
+    groupBy:
+      property: BevyVersion
+      direction: DESC
+    order:
+      - file.name
+      - formula.status_icon
+      - formula.created_date
+      - formula.word_estimate
+  - type: cards
+    name: 🌳 成熟笔记
+    filters:
+      and:
+        - Status == "🌲"
+    order:
+      - file.name
+      - formula.version_display
+      - formula.created_date
+      - formula.word_estimate
+  - type: table
+    name: 🌱 待完善笔记
+    filters:
+      or:
+        - Status == "🌿"
+        - Status == "📝"
+    order:
+      - file.name
+      - Status
+      - formula.version_display
+      - formula.note_age_days
+      - formula.created_date
+  - type: table
+    name: ✅ 已发布文章
+    filters:
+      and:
+        - publish == true
+    order:
+      - file.name
+      - formula.version_display
+      - formula.created_date
+      - formula.word_estimate
+  - type: list
+    name: 🆕 最近创建
+    order:
+      - file.name
+      - formula.created_date
+      - formula.status_icon
+    limit: 20
+  - type: table
+    name: 📖 长篇笔记
+    filters:
+      and:
+        - formula.word_estimate > 1000
+    order:
+      - file.name
+      - formula.word_estimate
+      - formula.status_icon
+      - formula.version_display
