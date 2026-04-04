@@ -8,3 +8,23 @@
 # 其他常见忽略项
 *.tmp
 *.temp
+
+# 备份/复制文件
+*.canvas copy
+*.canvas copy*
+* copy
+* copy.*
+
+# Obsidian Sync 冲突文件
+.sync-conflict-*
+*.sync-conflict*
+
+# 其他常见临时/备份文件
+*.bak
+*.swp
+*.swo
+*~
+.~lock.*#
+
+# 日志文件
+*.log
