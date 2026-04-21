@@ -3,7 +3,7 @@ Status: 🟩
 tags:
   - input/articles
 Links:
-  - "[[Obsdian MOC]]"
+  - "[[Obsidian]]"
 Created: 2025-06-19T19:53:22
 Source: 
 Author:

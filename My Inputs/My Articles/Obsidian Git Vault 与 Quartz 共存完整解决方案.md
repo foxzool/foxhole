@@ -3,7 +3,7 @@ Status: 🟩
 tags:
   - input/articles
 Links:
-  - "[[Obsdian MOC]]"
+  - "[[Obsidian]]"
   - "[[运维部署]]"
 Created: 2025-06-20T10:10:04
 Source:

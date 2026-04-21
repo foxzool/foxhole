@@ -1,10 +1,10 @@
 ---
-Status: 
+Status:
 tags:
   - note
 Links:
   - "[[DevOps MOC]]"
-  - "[[macOS MOC]]"
+  - "[[My Resources/My Maps of Content (MOCs)/macOS MOC]]"
 Created: 2025-06-13T10:30:39
 share: false
 ---
