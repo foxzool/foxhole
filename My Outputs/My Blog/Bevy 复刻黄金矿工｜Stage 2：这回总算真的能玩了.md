@@ -7,25 +7,25 @@ Links:
 Created: 2025-11-21T15:51:03
 BevyVersion:
   - "0.18"
-share:
+share: true
 Collection: "[[黄金矿工]]"
+title: Bevy 复刻黄金矿工｜Stage 2：这回总算真的能玩了
+digest: Stage 2 让黄金矿工真正能玩：钩子系统、碰撞抓取、地鼠 AI、TNT 爆炸、FX 特效、YAML 配关卡与商店，支持键鼠手柄。
+cover: https://v3b.fal.media/files/b/0a986cb2/TfCpXYGzym0-qTyDKf-YO_cef9a1c56d1145eba0a6029623cebc41.jpg
 ---
-# Bevy 复刻黄金矿工｜Stage 2：这回总算真的能玩了
+Stage 1 搭了个「壳」——菜单、坐标系、工程结构那些基础设施。Stage 2 就干一件事：让游戏真正能玩。
 
-Stage 1 搭了个「壳」——菜单、坐标系、工程结构那些基础设施。Stage 2 就干一件事：**让游戏真正能玩。**
-
-这阶段做的：钩子摆动、发射、抓取、回缩，YAML 配置、碰撞检测、地鼠 AI、TNT 爆炸链、FX 特效、商店系统、键盘+手柄支持。
-
-代码为主，废话少说，主要给自己备查 🦊
+钩子摆动、发射、抓取、回缩，YAML 配关卡，碰撞检测，地鼠 AI，TNT 爆炸链，FX 特效，商店系统，键盘+手柄支持。代码为主，主要给自己备查。
 
 ---
 
-## 游戏场景
+## 一、游戏场景
+
 ![image.png](https://assets.zool.me/2026/04/eac4d063da7f3379edf4ae3f253857ba.png)
 
-### 背景这块
+### 1.1 背景
 
-背景分两块：`bg_top.png`（顶部通用）和 `bg_level_[A-E].png`（关卡主体）。根据关卡号动态选：
+背景分两层：`bg_top.png`（顶部通用 UI 区域）和 `bg_level_[A-E].png`（关卡主体）。根据关卡号动态选择：
 
 ```rust
 /// src/demo/level.rs
@@ -55,11 +55,11 @@ pub fn spawn_background(
 }
 ```
 
-5 种背景对应不同「地质层」，关卡越往后，地下那味儿就越重。
+5 种背景对应不同地质层，关卡越往后地下风格越重。
 
-背景图片锚点统一用 `TOP_LEFT`，跟 Love2D 原版保持一致的左上角坐标系，省得换算来换算去。
+背景图片锚点统一用 `TOP_LEFT`，跟 Love2D 原版保持一致的左上角坐标系，省得换算。
 
-### 矿工和钩子这块
+### 1.2 矿工和钩子
 
 矿工用的 `miner_sheet.png`，8 帧横排，每帧 32×40：
 
@@ -80,7 +80,7 @@ commands.spawn((
 ));
 ```
 
-矿工动画我拆了 5 个状态：
+矿工动画拆成 5 个状态：
 
 | 状态 | 帧范围 | 说明 |
 |------|--------|------|
@@ -90,7 +90,7 @@ commands.spawn((
 | `UseDynamite` | 帧 3,4,5 循环 | 使用炸药 |
 | `Strengthen` | 帧 6,7,6,7 循环 | 力量增强 |
 
-钩子是这游戏的魂，结构也不复杂：
+钩子结构：
 
 ```rust
 /// src/demo/hook.rs
@@ -99,7 +99,7 @@ pub struct Hook {
     pub length: f32,           // 钩子伸出长度
     pub angle: f32,            // 当前角度
     pub rotate_right: bool,    // 旋转方向
-    pub is_grabing: bool,      // 是否正在伸出抓取
+    pub is_grabbing: bool,      // 是否正在伸出抓取
     pub is_backing: bool,      // 是否正在回缩
     pub is_showing_bonus: bool, // 是否显示奖励
     pub grabed_entity: Option<Entity>, // 抓取的实体
@@ -110,7 +110,7 @@ pub struct Hook {
 }
 ```
 
-顺手把几个关键常量也贴一下：
+关键常量：
 
 ```rust
 const HOOK_MIN_ANGLE: f32 = -75.0;    // 最小角度
@@ -122,15 +122,15 @@ const HOOK_COLLISION_RADIUS: f32 = 6.0; // 碰撞半径
 const HOOK_COLLISION_OFFSET: f32 = 13.0; // 碰撞圆心偏移
 ```
 
-钩子图片锚点设 `TOP_CENTER`，旋转时绕着顶部的中心点转——就像真的绳子拴着个爪子在那甩。
+钩子图片锚点设 `TOP_CENTER`，旋转时绕顶部中心点转。
 
 ---
 
-## 关卡配置
+## 二、关卡配置
 
-Stage 1 关卡数据还是硬写在代码里的，Stage 2 直接全抽成 YAML 了。改数值轻松不少。
+Stage 1 关卡数据硬编码在 Rust 里，Stage 2 全抽成 YAML，改数值不用动代码。
 
-### YAML 长这样
+### 2.1 YAML 结构
 
 ```yaml
 # assets/config/entities.yaml
@@ -162,17 +162,17 @@ Mole:
 
 QuestionBag:
     type: RandomEffect
-    randomMassMin: 1      # 随机质量最小值
-    randomMassMax: 9      # 随机质量最大值
-    bonusBase: 50         # 基础分值
+    randomMassMin: 1
+    randomMassMax: 9
+    bonusBase: 50
     randomBonusRatioMin: 1
     randomBonusRatioMax: 16
     extraEffectChances: 0.2
 
 TNT:
     type: Explosive
-    destroyedType: TNT_Destroyed  # 爆炸后显示的精灵图
-    isDestroyedTiny: true         # 爆炸后是否用小钩子抓取动画
+    destroyedType: TNT_Destroyed
+    isDestroyedTiny: true
     mass: 1
     bonus: 2
     bonusType: Low
@@ -192,9 +192,9 @@ LDEBUG:
           dir: Left
 ```
 
-四种类型，四套路数：固定不动、巡逻、随机效果、可爆炸。
+实体分四种，`Basic`、`MoveAround`、`RandomEffect`、`Explosive`，看名字就懂干嘛的。
 
-### Rust 这边怎么接
+### 2.2 Rust 反序列化
 
 ```rust
 /// src/config.rs
@@ -233,11 +233,11 @@ pub enum EntityType {
 }
 ```
 
-这里我只截了最常用的一段。实际代码里这个描述符还挂了 `random_mass_min`、`random_mass_max`、`bonus_base`、`random_bonus_ratio_min`、`random_bonus_ratio_max`、`destroyed_type`、`is_destroyed_tiny` 这些字段，QuestionBag 和 TNT 那套也都是从同一个结构里读出来的。
+实际代码里这个描述符还挂了 `random_mass_min`、`random_mass_max`、`bonus_base`、`random_bonus_ratio_min`、`random_bonus_ratio_max`、`destroyed_type`、`is_destroyed_tiny` 这些字段，QuestionBag 和 TNT 都走同一个结构。
 
-### 读进来
+### 2.3 加载 YAML
 
-这里直接拿 `bevy_common_assets` 读 YAML：
+用 `bevy_common_assets` 直接读：
 
 ```rust
 /// Cargo.toml
@@ -250,15 +250,15 @@ app.add_plugins((
 ));
 ```
 
-后面调数值基本就不用动 Rust 了，改 YAML 就完事。
+以后调数值改 YAML 就行，不用碰 Rust。
 
 ---
 
-## 碰撞检测
+## 三、碰撞检测
 
-### 碰撞这块
+### 3.1 钩子碰撞判定
 
-钩子用圆形判定，碰撞圆心在钩子末端再偏一点：
+钩子用圆形判定，碰撞圆心在钩子末端再偏一段距离：
 
 ```rust
 /// src/demo/hook.rs
@@ -282,11 +282,11 @@ fn update_hook(/* ... */) {
 }
 ```
 
-反正就一句话：两圆心距离 < 半径之和，就算撞上。
+两圆心距离 < 半径之和，就算命中。
 
-### 拉回速度
+### 3.2 拉回速度
 
-抓到东西后拉回速度不是固定的，看质量算：
+拉回速度按质量算：
 
 ```rust
 /// src/demo/hook.rs
@@ -308,13 +308,13 @@ if let Some(entity) = hook.grabed_entity
 hook.length -= time.delta_secs() * speed;
 ```
 
-**质量越大，拉得越慢。** 这玩意儿的取舍感基本全在这儿了。大的值钱，但拉起来真要命；小的轻，但又难勾。力量饮料一开，整个人都舒服不少。
+质量越大，拉得越慢。大的值钱但拉起来慢；小的轻快但难勾。力量饮料一开，整体舒服不少。
 
 ---
 
-## 实体系统
+## 四、实体系统
 
-### 动画这块
+### 4.1 实体动画
 
 可移动实体（地鼠）有 Idle 和 Move 两套帧：
 
@@ -342,7 +342,7 @@ impl EntityAnimation {
 }
 ```
 
-### 地鼠巡逻
+### 4.2 地鼠巡逻
 
 地鼠在范围内左右走，走一段停一下：
 
@@ -383,11 +383,9 @@ fn patrol_movement_system(/* ... */) {
 }
 ```
 
-到点就停，停完掉头再走。逻辑不复杂，但地鼠一下就活了，不再像贴图在那左右平移。
+到边界就停，停完掉头再走。逻辑简单，但地鼠不再像贴图平移。
 
-### 生成的时候
-
-刷出来的时候按类型挂东西：
+### 4.3 生成时按类型挂载组件
 
 ```rust
 /// src/demo/level.rs
@@ -407,11 +405,11 @@ fn spawn_entity_sprite(/* ... */) {
 
 ---
 
-## FX 特效系统
+## 五、FX 特效系统
 
-### 先把底子搭了
+### 5.1 通用组件
 
-FX 这块我没分着写，直接搓了个通用组件：
+FX 没按效果拆组件，直接搓了个通用的：
 
 ```rust
 /// src/demo/fx.rs
@@ -435,7 +433,6 @@ impl FXAnimation {
         // ...
     }
 
-    // 构建器模式设 z 层级
     pub fn with_z_layer(mut self, z_layer: f32) -> Self {
         self.z_layer = z_layer;
         self
@@ -455,9 +452,9 @@ pub enum FXPlacement {
 }
 ```
 
-`Loop` + `Follow` 拿来做大金砖闪光，`Once` + `Fixed` 拿来做爆炸。一个组件吃完，省得后面东补一块西补一块。
+`Loop` + `Follow` 拿来做大金砖闪光，`Once` + `Fixed` 拿来做爆炸。一个组件覆盖两种需求，后面不用东补一块西补一块。
 
-### 大金砖闪光
+### 5.2 大金砖闪光
 
 钩到 BigGold 时挂个循环闪光：
 
@@ -483,9 +480,9 @@ if entity_id == "BigGold"
 }
 ```
 
-金砖被拖回来时，闪光也会跟着跑。就这么一点点东西，手感马上就出来了。
+金砖被拖回来时，闪光跟着跑。
 
-### 爆炸这套
+### 5.3 爆炸特效
 
 两种规格：
 
@@ -520,11 +517,11 @@ pub fn spawn_standard_explosion_fx(
 
 ---
 
-## TNT 爆炸
+## 六、TNT 爆炸
 
-### 怎么炸起来
+### 6.1 爆炸状态
 
-钩到 TNT 就炸，核心状态就这几个：
+钩到 TNT 就炸，状态很简单：
 
 ```rust
 /// src/demo/explosive.rs
@@ -543,9 +540,9 @@ pub struct ExplosionFX {
 }
 ```
 
-### 连锁这块
+### 6.2 连锁反应
 
-最爽的部分——TNT 会引爆旁边的 TNT：
+TNT 会引爆旁边的 TNT：
 
 ```rust
 /// src/demo/explosive.rs
@@ -566,9 +563,10 @@ fn explosion_damage_system(/* ... */) {
     }
 
     // 连锁反应：引爆范围内的其他 TNT
-    for (entity, mut state, _) in q_explosives.iter_mut() {
+    for (entity, mut state, transform, _) in q_explosives.iter_mut() {
         if state.is_exploding { continue; }
 
+        let entity_pos = transform.translation().truncate();
         for center in &explosion_centers {
             if center.distance(entity_pos) < (EXPLOSION_RADIUS + 6.0) {
                 state.is_exploding = true;
@@ -579,11 +577,11 @@ fn explosion_damage_system(/* ... */) {
 }
 ```
 
-链式反应会逐帧传播——这帧 A 爆了下帧 B 爆，看着 TNT 一排排炸过去，视觉爽感拉满 💥
+链式反应逐帧传播——这帧 A 爆了下帧 B 爆，TNT 一排排炸过去。
 
-### 最后收尾
+### 6.3 收尾清理
 
-爆炸播完也不是立刻删，还得先看钩子是不是还挂着它。还挂着就先留着，等松手再清：
+爆炸播完也不是立刻删，还得检查钩子是不是还挂着它：
 
 ```rust
 /// src/demo/explosive.rs
@@ -610,11 +608,11 @@ fn explosion_cleanup_system(
 
 ---
 
-## 奖励计算
+## 七、奖励计算
 
-### 玩家身上的数据
+### 7.1 玩家数据
 
-玩家这边单独挂了个 Resource，跨关都靠它记：
+玩家数据用 Resource 存，跨关卡不掉：
 
 ```rust
 /// src/demo/player.rs
@@ -623,7 +621,7 @@ pub struct PlayerResource {
     pub money: i32,
     pub goal: i32,
     pub goal_add_on: i32,
-    pub strength: f32,          // 基础力量倍率（浮点数）
+    pub strength: f32,          // 基础力量倍率
     pub dynamite_count: i32,
     pub has_strength_drink: bool,
     pub has_lucky_clover: bool,
@@ -634,7 +632,7 @@ pub struct PlayerResource {
 }
 ```
 
-### 先算底分
+### 7.2 基础分 + 道具叠加
 
 先按配置拿基础分：
 
@@ -644,9 +642,7 @@ let mut bonus = descriptor.bonus.unwrap_or(0);
 let sound_id = descriptor.bonus_type.as_deref().unwrap_or("Normal");
 ```
 
-### 再叠道具
-
-然后再看道具怎么改钱：
+道具结算：
 
 ```rust
 /// src/demo/hook.rs
@@ -694,9 +690,9 @@ if chances > 0.0 && rand::random::<f32>() < chances {
 
 ---
 
-## 输入控制
+## 八、输入控制
 
-### 输入这块
+### 8.1 键盘 + 手柄
 
 键盘手柄都能打：
 
@@ -731,7 +727,7 @@ fn handle_hook_input(/* ... */) {
 }
 ```
 
-### 炸药怎么用
+### 8.2 炸药使用
 
 钩子回缩时抓着东西可以按上键炸掉：
 
@@ -760,15 +756,15 @@ if use_dynamite
 }
 ```
 
-最常见的用法就是：钩到大石头，嫌慢，直接炸。
+最常见的用法：钩到大石头，嫌慢，直接炸。
 
 ---
 
-## 商店
+## 九、商店
 
 ![image.png](https://assets.zool.me/2026/04/9e58a0a4618d080e93d22ef60d1b9c34.png)
 
-### 商店里卖啥
+### 9.1 商品配置
 
 5 种道具，价格随关卡涨还带随机：
 
@@ -783,7 +779,6 @@ pub enum PropType {
 }
 
 impl PropType {
-    // 英文描述，UI 显示用
     fn description(&self) -> &'static str {
         match self {
             PropType::Dynamite => "Destroy grabbed entity",
@@ -795,27 +790,26 @@ impl PropType {
     }
 
     fn get_price(&self, level: u32) -> u32 {
-        let mut rng = rand::rng();
+        let mut rng = rand::thread_rng();
         match self {
-            PropType::Dynamite => rng.random_range(1..=300) + 1 + level * 2,
-            PropType::StrengthDrink => rng.random_range(100..=400),
-            PropType::LuckyClover => rng.random_range(1..=(level * 50).max(1)) + 1 + level * 2,
-            PropType::RockCollectorsBook => rng.random_range(1..=150) + 1,
-            PropType::GemPolish => rng.random_range(201..=(level * 100 + 201)),
+            PropType::Dynamite => rng.gen_range(1..=300) + 1 + level * 2,
+            PropType::StrengthDrink => rng.gen_range(100..=400),
+            PropType::LuckyClover => rng.gen_range(1..=(level * 50).max(1)) + 1 + level * 2,
+            PropType::RockCollectorsBook => rng.gen_range(1..=150) + 1,
+            PropType::GemPolish => rng.gen_range(201..=(level * 100 + 201)),
         }
     }
 }
 ```
 
-商品也不是把 5 个全塞给你看，基本上是随机刷，最少保底一个。
+商品不是 5 个全刷，随机出，最少保底一个。
 
-### 店老板
+### 9.2 店主 NPC
 
-商店这老板也不只是站桩，买不买东西他脸色都不一样：
+店老板不只是站桩，买不买东西他脸色都不一样：
 
 ```rust
 /// src/screens/shop.rs
-// 店主精灵：2 帧纹理图集，帧 0 = Idle，帧 1 = Sad
 commands.spawn((
     Name::new("Shopkeeper"),
     Sprite::from_atlas_image(
@@ -827,7 +821,7 @@ commands.spawn((
 ));
 ```
 
-切脸也很直接：
+切脸逻辑：
 
 ```rust
 /// src/screens/shop.rs
@@ -848,13 +842,13 @@ if shop_state.is_finish_shopping {
 
 就这么点小动作，商店一下就不木了。
 
-顺手还塞了操作提示和对话。没钱的时候老板会直接怼你一句："You don't seem to have any money :("
+没钱的时候老板会直接怼你一句："You don't seem to have any money :("
 
 ---
 
-## 关卡统计
+## 十、关卡统计
 
-### 统计怎么记
+### 10.1 统计 Resource
 
 ```rust
 /// src/screens/stats.rs
@@ -894,13 +888,13 @@ impl LevelStats {
 }
 ```
 
-现在统计这块不只是记分和倒计时。`money_view` 专门拿来做 HUD 金额滚动，不然每次加钱都直接跳字，看着有点硬。`is_first_init` 则是给首关那次过场用的。
+`money_view` 专门拿来做 HUD 金额滚动，不然每次加钱都直接跳字，看着有点硬。`is_first_init` 给首关过场用。
 
-关卡这块前 3 关一路往上，后面就按 7 关一轮循环，再随机挑个变体，不至于每轮都长一个样。
+关卡前 3 关线性往上，后面按 7 关一轮循环，再随机挑个变体，不至于每轮都长一个样。
 
-### HUD 这一排
+### 10.2 HUD 布局
 
-这排 HUD 还是直接拿 `Text2d` 画，不过金额显示现在走的是 `money_view`：先把真实值记到 `money`，再慢慢滚到界面上。
+这排 HUD 直接拿 `Text2d` 画，金额显示走 `money_view`：先把真实值记到 `money`，再慢慢滚到界面上。
 
 ```rust
 /// src/demo/level.rs
@@ -942,25 +936,34 @@ fn setup_ui(/* ... */) {
 
 ---
 
-## Stage 2 收尾
+## 十一、Stage 2 完成效果
 
 做到这儿，这游戏就算真能玩了：
 
-- ✅ 钩子：摆动发射抓取回缩全套
-- ✅ YAML 配置关卡和实体
-- ✅ 圆形碰撞 + 质量影响速度
-- ✅ 地鼠巡逻 AI
-- ✅ TNT 爆炸链
-- ✅ FX 特效系统
-- ✅ 大金砖闪光
-- ✅ 店主 NPC（会变脸）
-- ✅ 道具系统
-- ✅ 关卡目标/计时/通关判定
-- ✅ 炸药
-- ✅ 键盘 + 手柄
+- 钩子：摆动发射抓取回缩全套
+- YAML 配置关卡和实体
+- 圆形碰撞 + 质量影响速度
+- 地鼠巡逻 AI
+- TNT 爆炸链
+- FX 特效系统
+- 大金砖闪光
+- 店主 NPC（会变脸）
+- 道具系统
+- 关卡目标/计时/通关判定
+- 炸药
+- 键盘 + 手柄
 
-**Stage 2 搞定** ✅
+Stage 2 搞定。
 
 ---
 
-音频、存档、完整屏幕流转这些，留到 Stage 3 再慢慢展开。
+## 十二、下一阶段：Stage 3
+
+Stage 3 打算做：
+
+- 音频（BGM、音效、语音）
+- 存档
+- 屏幕流转（Loading → Menu → Gameplay → Shop → Game Over）
+- 关卡过渡动画
+
+这些做完，游戏体验就完整了。Stage 2 搭的玩法、实体、商店是后面所有东西的底子。
