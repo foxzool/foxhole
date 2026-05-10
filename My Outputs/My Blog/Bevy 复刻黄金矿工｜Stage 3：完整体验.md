@@ -11,8 +11,9 @@ share: true
 Collection: "[[黄金矿工]]"
 title: Bevy 复刻黄金矿工｜Stage 3：完整体验
 digest: Stage 3 补齐音频、存档、画面流转、UI 主题和商店系统，让黄金矿工从能玩变成完整游戏。
-cover:
+cover: https://assets.zool.me/2026/05/b488e59193fe7d89257e18cab307c8b5.png
 ---
+![image.png](https://assets.zool.me/2026/05/b488e59193fe7d89257e18cab307c8b5.png)
 
 ## 一、音频系统
 
@@ -89,7 +90,11 @@ if fire && !hook.is_grabing && !hook.is_backing && !hook.is_showing_bonus {
 
 ### 1.3 过渡音乐
 
-关卡间切换（`NextGoal`、`MadeGoal`）需要播一段短音乐，等音乐放完再切画面。`TransitionMusic` 和 `TransitionMusicStatus` 就是干这个的。
+关卡间切换（`NextGoal`、`MadeGoal`）需要播一段短音乐，等音乐放完再切画面。
+
+![image.png](https://assets.zool.me/2026/05/1ff4f6a259ab8a34cddff46943f6ad29.png)
+
+`TransitionMusic` 和 `TransitionMusicStatus` 就是干这个的。
 
 ```rust
 /// src/audio.rs
@@ -285,6 +290,7 @@ pub fn ui_root(name: impl Into<Cow<'static, str>>) -> impl Bundle {
 `palette.rs` 定义了所有颜色常量。`screens/` 和 `menus/` 里不许硬编码颜色，必须用 palette 里的值。这条规则主要靠自觉，clippy 管不了。
 
 ### 4.2 商店逻辑
+![image.png](https://assets.zool.me/2026/05/6ea77ab919eb8e70dc745555cb1c99d2.png)
 
 `shop.rs` 实现了原版商店。5 种道具：
 
@@ -296,15 +302,15 @@ pub fn ui_root(name: impl Into<Cow<'static, str>>) -> impl Bundle {
 | RockCollectorsBook | 岩石价值 ×3 |
 | GemPolish | 钻石价值 ×1.5 |
 
-每关开始前有 66% 概率随机出现 1-5 种道具，价格随关卡浮动。`PropType::get_price()` 用 `rand::random_range()` 生成随机区间。
+每关开始前有 66% 概率随机出现 1-5 种道具，价格随关卡浮动。`PropType::get_price()` 用 `rand::thread_rng().gen_range()` 生成随机区间。
 
 ```rust
 /// src/screens/shop.rs
 fn get_price(&self, level: u32) -> u32 {
-    let mut rng = rand::rng();
+    let mut rng = rand::thread_rng();
     match self {
-        PropType::Dynamite => rng.random_range(1..=300) + 1 + level * 2,
-        PropType::StrengthDrink => rng.random_range(100..=400),
+        PropType::Dynamite => rng.gen_range(1..=300) + 1 + level * 2,
+        PropType::StrengthDrink => rng.gen_range(100..=400),
         // ...
     }
 }
