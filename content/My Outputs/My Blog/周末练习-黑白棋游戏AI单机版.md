@@ -1,10 +1,11 @@
 ---
+title: 周末练习-黑白棋游戏AI单机版
 Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-07-04T16:28:13
+  - "[[Bevy MOC]]"
+Created: 2025-07-04
 BevyVersion:
   - "0.16"
 share: true

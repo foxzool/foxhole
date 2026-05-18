@@ -1,10 +1,11 @@
 ---
+title: Bevy制作拼图游戏 Day 4
 Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2024-11-05T15:32:44
+  - "[[Bevy MOC]]"
+Created: 2024-11-05
 BevyVersion: "0.15"
 share: true
 Collection: "[[拼图游戏]]"
@@ -122,3 +123,4 @@ fn on_selected(
 }
 ```
 取消选择拼图时， 就是反向移动和改回白色。
+

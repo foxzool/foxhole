@@ -1,14 +1,16 @@
 ---
+title: Bevy 复刻黄金矿工｜Stage 1：玩法规划与前期准备
 Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-11-12T10:57:27
+  - "[[Bevy MOC]]"
+Created: 2025-11-12
 BevyVersion:
   - "0.17"
 share: true
 Collection: "[[黄金矿工]]"
+Finished: 2025-11-12
 ---
 # Bevy 复刻黄金矿工｜Stage 1：玩法规划与前期准备
 

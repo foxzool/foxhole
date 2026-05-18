@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: Bevy 引擎中的坐标系统详解
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-05-12T18:09:26
+  - "[[Bevy MOC]]"
+Created: 2025-05-12
 BevyVersion: "0.16"
 share: true
+Finished: 2025-05-12
 ---
 #  Bevy 坐标系统概览
 Bevy 与多数游戏引擎类似，采用了多种坐标系统，每种系统都为特定任务量身定制。本文将主要探讨以下几种系统：

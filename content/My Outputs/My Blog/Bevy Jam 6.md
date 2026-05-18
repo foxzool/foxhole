@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: Bevy Jam 6
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-06-10T11:24:00
+  - "[[Bevy MOC]]"
+Created: 2025-06-10
 BevyVersion: "0.16"
 share: true
+Finished: 2025-06-10
 ---
 # Bevy Jam #6
 第一次参加game jam, 记一下流水账.

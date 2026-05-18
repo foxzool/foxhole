@@ -1,14 +1,16 @@
 ---
-Status: 🌲
+title: Bevy 0.16 速览
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-04-25T10:13:13
+  - "[[Bevy MOC]]"
+Created: 2025-04-25
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-04-25
 ---
 Bevy 0.16 刚刚发布 [新闻](https://bevyengine.org/news/bevy-0-16/)
 

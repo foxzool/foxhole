@@ -1,10 +1,12 @@
 ---
-Status: 🌿
+Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2026-01-14T13:40:14
+  - "[[Bevy MOC]]"
+Created: 2026-01-14
+title: 没有BSN,  Bevy 0.18 发布
+Finished: 2026-05-17
 BevyVersion:
   - "0.18"
 share: true

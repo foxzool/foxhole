@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: Bevy 寻路技术栈
+Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-08-21T14:46:32
+  - "[[Bevy MOC]]"
+Created: 2025-08-21
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-08-21
 ---
 # Bevy 寻路技术栈
 

@@ -3,7 +3,7 @@ Status: 🌲
 tags:
   - note
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
+  - "[[Bevy MOC]]"
 Created: 2024-12-01T15:13:44
 BevyVersion: "0.15"
 share: true

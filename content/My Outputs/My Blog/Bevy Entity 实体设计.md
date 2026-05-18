@@ -1,14 +1,16 @@
 ---
-Status: 🌲
+title: Bevy Entity 实体设计
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2024-11-13T13:10:26
+  - "[[Bevy MOC]]"
+Created: 2024-11-13
 share: true
+Finished: 2024-11-13
 ---
-![[Bevy ECS 介绍|Bevy ECS 介绍]]
+![[./Bevy ECS 介绍|Bevy ECS 介绍]]
 
 ## Bevy Entity 结构
 当我们打印/调试时， 经常看到`Entity`的Display/Debug输出是这样的

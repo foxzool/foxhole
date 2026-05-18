@@ -1,11 +1,12 @@
 ---
+title: Bevy制作拼图游戏 Day 3
 Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-  - "[[Bevy拼图游戏|Bevy拼图游戏]]"
-Created: 2024-11-01T11:36:20
+  - "[[Bevy MOC]]"
+  - "[[Bevy拼图游戏]]"
+Created: 2024-11-01
 BevyVersion: "0.15"
 share: true
 Collection: "[[拼图游戏]]"

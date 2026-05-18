@@ -3,8 +3,8 @@ Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2024-10-22T11:08:19
+  - "[[Bevy MOC]]"
+Created: 2024-10-22
 title: Bevy制作拼图游戏 Day 1
 BevyVersion: "0.15"
 share: true

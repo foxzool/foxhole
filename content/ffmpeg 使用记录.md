@@ -3,7 +3,7 @@ Status: 🌱
 tags:
   - note
 Links:
-  - "[[DevOps MOC|DevOps MOC]]"
+  - "[[DevOps MOC]]"
 Created: 2024-11-25T10:44:07
 share: true
 ---
