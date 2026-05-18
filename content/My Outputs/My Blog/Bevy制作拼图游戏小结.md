@@ -1,10 +1,11 @@
 ---
+title: Bevy制作拼图游戏小结
 Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2024-11-25T17:15:12
+  - "[[Bevy MOC]]"
+Created: 2024-11-25
 BevyVersion:
   - "0.15"
 share: true
