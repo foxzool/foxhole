@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: 深入理解 Bevy Apps：游戏引擎的核心架构
+Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-08-29T13:36:13
+  - "[[Bevy MOC]]"
+Created: 2025-08-29
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-08-29
 ---
 # 深入理解 Bevy Apps：游戏引擎的核心架构
 
