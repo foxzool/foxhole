@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: Bevy 游戏引擎调试技巧全面指南
+Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-09-19T16:34:50
+  - "[[Bevy MOC]]"
+Created: 2025-09-19
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-09-19
 ---
 # Bevy 游戏引擎调试技巧全面指南
 
