@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: leafwing-input-manager 初学者指南
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
-Created: 2025-07-24T16:44:53
+Created: 2025-07-24
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-07-24
 ---
 # leafwing-input-manager 初学者指南
 
