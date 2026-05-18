@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: Bevy SystemParam 入门教程：让系统与游戏世界对话
+Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-07-10T15:25:44
+  - "[[Bevy MOC]]"
+Created: 2025-07-10
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-07-10
 ---
 # Bevy SystemParam 入门教程：让系统与游戏世界对话
 
