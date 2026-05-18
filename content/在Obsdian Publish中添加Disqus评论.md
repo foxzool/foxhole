@@ -3,7 +3,7 @@ Status: 🌲
 tags:
   - note
 Links:
-  - "[[Obsidian|Obsidian]]"
+  - "[[Obsidian]]"
 Created: 2024-11-10T19:28:46
 Source:
   - https://garden.sparrow.zone/Integrating+Comments+in+Obsidian+Publish
