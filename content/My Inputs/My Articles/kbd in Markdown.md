@@ -3,7 +3,7 @@ Status: 🟩
 tags:
   - input/articles
 Links:
-  - "[[Markdown MOC|Markdown MOC]]"
+  - "[[Markdown MOC]]"
 Created: 2024-11-12T14:20:34
 share: "true"
 ---
