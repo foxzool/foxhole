@@ -1,10 +1,11 @@
 ---
+title: "[插件分享]Bevy-Flash"
 Status: 🟩
 tags:
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2025-04-04T09:11:59
+  - "[[Bevy MOC]]"
+Created: 2025-04-04
 BevyVersion:
   - "0.15"
 share: true
