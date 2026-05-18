@@ -1,12 +1,14 @@
 ---
-Status: 🌲
+title: Bevy ECS 介绍
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
-  - "[[Bevy MOC|Bevy MOC]]"
-Created: 2024-11-13T14:04:52
+  - "[[Bevy MOC]]"
+Created: 2024-11-13
 share: true
+Finished: 2024-11-13
 ---
 Bevy 作为一个数据驱动的游戏引擎， 其内部架构为 ECS(Entity-Component-System) 组件化设计模式。
 ## 为什么用ECS
