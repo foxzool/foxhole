@@ -350,6 +350,8 @@ spawn_billboard_batch(
 
 实际体验上，Demo 里同时放了 17×17 的球形网格（289 个）加 24 个圆柱形（共 313 个），MacBook Air M2 稳 120fps，性能焦虑不大[^11]。
 
+![Demo 运行效果：球形粒子网格与圆柱形路牌环](https://assets.zool.me/2026/05/eab5659c7165d77656c0900815640c80.png)
+
 后续如果要扩展，路径也很清晰：
 - 需要 PBR 光照和阴影 → 迁移到 `ExtendedMaterial`，保留标准材质的光照管线[^1][^4]。
 - 需要支持 Prepass/Deferred/MSAA → 补充对应的顶点着色器 pass[^2]。
