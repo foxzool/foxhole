@@ -82,7 +82,7 @@ impl Plugin for BillboardPlugin {
 
 模型矩阵 `M = T * R * S`。我们需要的是平移 `T`（世界中心）和缩放 `S`（尺寸），但要把旋转 `R` 扔掉。在 WGSL 中，从 `get_world_from_local(instance_index)` 拿到的 `model` 就是完整的模型矩阵。它的第 4 列 `(model[3][0], model[3][1], model[3][2])` 正是世界坐标系下的中心点[^6]。而第 1 列和第 2 列基向量的长度，分别对应 X 轴和 Y 轴的缩放系数：
 
-```
+```text
 scale_x = length( vec3(model[0][0], model[0][1], model[0][2]) )
 scale_y = length( vec3(model[1][0], model[1][1], model[1][2]) )
 ```
@@ -91,7 +91,7 @@ scale_y = length( vec3(model[1][0], model[1][1], model[1][2]) )
 
 有了这四个向量，球形广告牌的顶点世界坐标就是：
 
-```
+```text
 world_position = world_center + x * scale_x * camera_right + y * scale_y * camera_up
 ```
 
@@ -99,13 +99,13 @@ world_position = world_center + x * scale_x * camera_right + y * scale_y * camer
 
 圆柱形模式稍微复杂。首先把相机前向量拍扁到 XZ 平面：
 
-```
+```text
 front_xz = (cam_front.x, 0, cam_front.z)
 ```
 
 归一化后得到 `front_flat`。然后用世界 Y 轴与它叉乘，得到水平面内的右向量：
 
-```
+```text
 right = normalize( cross(world_up, front_flat) )
 up    = world_up
 ```
