@@ -3,8 +3,8 @@ Status: 🌱
 share: true
 Created: 2026-05-21
 Finished: 2026-05-21
-title: Bevy 广告牌实现笔记
-cover: https://assets.zool.me/2026/05/18affbbe37b0c94487740ca3c0472e15.png
+title: Bevy Billboard：面与不面
+cover: https://assets.zool.me/2026/05/10cdbf475d44a9dada45dfc6c58739ea.png
 tags:
   - output/blog
   - bevy
