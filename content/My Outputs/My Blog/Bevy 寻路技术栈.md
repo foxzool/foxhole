@@ -1,5 +1,5 @@
 ---
-title: Bevy 寻路技术栈
+title: "Bevy 寻路技术栈"
 Status: 🟩
 tags:
   - output/blog
@@ -351,9 +351,9 @@ landmass 提供四大功能：
 
 landmass 使用一个有趣的比喻：
 
-- **Archipelago（群岛）**：整个导航世界
-- **Island（岛屿）**：一块连通的可行走区域
-- **Agent（代理）**：在岛上移动的角色
+- <strong>Archipelago（群岛）</strong>：整个导航世界
+- <strong>Island（岛屿）</strong>：一块连通的可行走区域
+- <strong>Agent（代理）</strong>：在岛上移动的角色
 
 ```rust
 // 创建一个"群岛"

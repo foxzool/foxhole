@@ -5,7 +5,7 @@ tags:
 Links:
   - "[[Bevy MOC]]"
 Created: 2026-01-14
-title: 没有BSN,  Bevy 0.18 发布
+title: "没有BSN,  Bevy 0.18 发布"
 Finished: 2026-05-17
 BevyVersion:
   - "0.18"
@@ -56,7 +56,7 @@ Bevy 的 UI 生态原本更偏底层，在 0.17 / 0.18 周期中不断补强。0
     
 - **Bevy Feathers Widget: ColorPlane**，为工具类 UI（例如颜色选择器）提供专用组件
     
-- **自动方向导航（AutoDirectionalNavigation）**，允许 UI 通过键盘或手柄在元素之间自动导航，大幅改善游戏菜单与界面导航体验
+- <strong>自动方向导航（AutoDirectionalNavigation）</strong>，允许 UI 通过键盘或手柄在元素之间自动导航，大幅改善游戏菜单与界面导航体验
 
 这些增强不仅提升了 UI 的完整性，也将 Bevy 推向 “可做生产级菜单 / 工具界面”的方向。
 

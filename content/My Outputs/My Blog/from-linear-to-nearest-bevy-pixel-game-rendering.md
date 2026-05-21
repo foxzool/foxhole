@@ -1,5 +1,4 @@
 ---
-title: from-linear-to-nearest-bevy-pixel-game-rendering
 Status: 🟩
 tags:
   - output/blog
@@ -9,6 +8,7 @@ tags:
 Links:
   - "[[Bevy MOC]]"
 Created: 2026-05-11
+title: "from-linear-to-nearest-bevy-pixel-game-rendering"
 Collection:
   - "[[Blog Posts MOC]]"
 Finished: 2026-05-12
@@ -40,13 +40,13 @@ share: true
 
 这两个词是 GPU 采样器（Sampler）的配置，决定了当渲染的像素不正好对齐纹理像素（texel）时，GPU 该怎么做。
 
-**Nearest （最近邻）**
+<strong>Nearest （最近邻）</strong>
 
 > “把离我最近的那个 texel 的颜色拿来。”
 
 插值数量：1 个 texel（最快）。效果：块状感、像素锋利。用于：像素艺术、Minecraft 风格体素、数据纹理（法线 ID、标识等）。
 
-**Linear （线性插值）**
+<strong>Linear （线性插值）</strong>
 
 > “看周围 4 个 texel，做一个双线性混合。”
 

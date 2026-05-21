@@ -1,5 +1,5 @@
 ---
-title: Bevy BSN：spawn 按钮从 20 行到 5 行
+title: "Bevy BSN：spawn 按钮从 20 行到 5 行"
 Status: 🟩
 tags:
   - output/blog
@@ -11,7 +11,7 @@ share: true
 ---
 > **版本说明**：本文基于 Bevy 0.19 / main 分支撰写。截至 2026-05-13，crates.io 上最新正式版仍为 0.18.x，但 GitHub 上的 0.19 milestone 已经完成 99%（428 closed / 2 open）[^1]，BSN 的核心子集已经落到了 main 分支。如果你现在就想尝鲜，直接拉 main 即可。
 
-![封面图](../../assets/blog-images/bsn-cover.png)
+![封面图](assets/blog-images/bsn-cover.png)
 
 
 ---
@@ -284,7 +284,7 @@ Issue #24050 还在 open，已经有 PR #24069 在修，不确定 0.19 正式版
 - **做 UI / 2D 原型，不想写 20 行按钮** → main 分支上的 BSN 已经可以爽了。
 - **需要保存场景到文件 / 加载 GLTF / 编辑器工作流** → 继续用 `bevy_world_serialization`（旧系统），等 0.20。
 - **debug build 编译慢到受不了** → 等 cart 的优化进稳定版，或者只在 UI 模块局部使用 BSN。
-- **项目要求可序列化场景格式（如 MOD 支持）** → BSN 目前做不了，别硬上。
+- <strong>项目要求可序列化场景格式（如 MOD 支持）</strong> → BSN 目前做不了，别硬上。
 
 ## 从 Bundle 到 BSN：这三年的演进简史（可选阅读）
 

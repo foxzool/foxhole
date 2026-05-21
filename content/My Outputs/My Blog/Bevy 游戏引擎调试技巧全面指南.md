@@ -1,11 +1,11 @@
 ---
-title: Bevy 游戏引擎调试技巧全面指南
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
 Created: 2025-09-19
+title: "Bevy 游戏引擎调试技巧全面指南"
 BevyVersion:
   - "0.16"
 share: true
@@ -45,7 +45,7 @@ fn example_system() {
 
 Bevy 默认只显示 `info!` 及以上级别的日志。调试时你会发现 `debug!` 和 `trace!` 的输出"消失"了，需要手动调整级别：
 
-**方法一：代码配置（推荐）**
+<strong>方法一：代码配置（推荐）</strong>
 
 ```rust
 use bevy::log::{LogPlugin, Level};

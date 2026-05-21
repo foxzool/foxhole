@@ -1,5 +1,5 @@
 ---
-title: Bevy 实体状态管理完全指南：从 FSM 到 HSM 的架构演进与实战选型
+title: "Bevy 实体状态管理完全指南：从 FSM 到 HSM 的架构演进与实战选型"
 Status: 🟩
 tags:
   - output/blog
@@ -25,7 +25,7 @@ Finished: 2025-08-29
 
 Bevy 的状态管理存在两个截然不同的层次：
 
-**全局应用状态（bevy_state）**
+<strong>全局应用状态（bevy_state）</strong>
 
 ```rust
 #[derive(States, Default, Debug, Clone, PartialEq, Eq, Hash)]
