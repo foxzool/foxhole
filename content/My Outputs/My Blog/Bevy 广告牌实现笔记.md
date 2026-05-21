@@ -18,7 +18,7 @@ Lin: "[[Bevy MOC]]"
 
 这个技术老得可以。PS1 时代的《最终幻想战略版》就已经大量用纸片角色来节省面数——一整支军队里真正做了模型的可能只有主角，杂兵全是永远面朝镜头的贴图平面。
 
-![PS1《最终幻想战略版》战斗场景：2D 角色精灵（billboard）始终面向相机，无论在地图上的什么位置](https://cdn.mobygames.com/screenshots/124134-final-fantasy-tactics-playstation-not-really-a-surprise-attack.png)
+![PS1《最终幻想战略版》战斗场景：角色 billboard 始终正面朝向相机，清晰展示 2D 精灵图效果](https://assets.zool.me/2026/05/a8bc704fc5534be130a0a150d2f46994.png)
 
 （图源：[MobyGames — Final Fantasy Tactics Screenshots](https://www.mobygames.com/game/4522/final-fantasy-tactics/screenshots)）
 
