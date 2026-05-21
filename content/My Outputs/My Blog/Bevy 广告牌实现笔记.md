@@ -38,7 +38,7 @@ Lin: "[[Bevy MOC]]"
 
 很多教程把这两种模式混在一起讲，结果读者抄了球形代码去种树，镜头一转，树倒了一地。
 
-数学上的差异在于基向量的构造方式。球形需要相机的完整基向量（右、上、前）；圆柱形需要把相机的前向量先拍扁到 XZ 平面，再用世界 Y 轴叉乘得到新的右向量，确保广告牌的"上"始终与世界 Y 对齐[^6][^7]。
+数学上的差异在于基向量的构造方式。球形需要相机的完整基向量（右、上、前）；圆柱形需要把相机的前向量先拍扁到 XZ 平面，再用世界 Y 轴叉乘得到新的右向量，确保广告牌的"上"始终与世界 Y 对齐[^5][^6]。
 
 ```rust
 /// 广告牌朝向模式。
@@ -62,7 +62,7 @@ pub enum BillboardMode {
 
 ## 为什么在 Bevy 里必须手写着色器
 
-Bevy 官方至今没有内置的广告牌组件。Issue #3688 从 2022 年挂到现在，维护者承认这是合理需求，但优先级一直没排上[^5]。社区最成熟的 crate `bevy_mod_billboard` 只适配到 Bevy 0.14，0.15+ 没有官方适配——这在新版本迁移频繁的 Bevy 生态里几乎是致命伤。
+Bevy 官方至今没有内置的广告牌组件。Issue #3688 从 2022 年挂到现在，维护者承认这是合理需求，但优先级一直没排上[^4]。社区最成熟的 crate `bevy_mod_billboard` 只适配到 Bevy 0.14，0.15+ 没有官方适配——这在新版本迁移频繁的 Bevy 生态里几乎是致命伤。
 
 结论很直白：想在自己项目里稳定用，只能自己动手写 Custom Material + 顶点着色器。每次升版本都要检查一遍社区 crate 的兼容性，不如自己掌握原理来得踏实。顺带一提，如果你要做的只是纯粒子特效（比如火焰、爆炸、魔法粉尘），`bevy_hanabi` 更省事，它内置了朝向设置，不用从零开始。
 
@@ -78,7 +78,7 @@ impl Plugin for BillboardPlugin {
 }
 ```
 
-`MaterialPlugin` 会把着色器管线、绑定组布局、渲染队列全部替你铺好[^8]。你不需要手写任何 WebGPU 绑定组描述符。
+`MaterialPlugin` 会把着色器管线、绑定组布局、渲染队列全部替你铺好[^7]。你不需要手写任何 WebGPU 绑定组描述符。
 
 ---
 
@@ -88,14 +88,14 @@ impl Plugin for BillboardPlugin {
 
 正确的做法是在顶点阶段**手动重建世界坐标**。推导过程如下：
 
-模型矩阵 `M = T * R * S`。我们需要的是平移 `T`（世界中心）和缩放 `S`（尺寸），但要把旋转 `R` 扔掉。在 WGSL 中，从 `get_world_from_local(instance_index)` 拿到的 `model` 就是完整的模型矩阵。它的第 4 列 `(model[3][0], model[3][1], model[3][2])` 正是世界坐标系下的中心点[^6]。而第 1 列和第 2 列基向量的长度，分别对应 X 轴和 Y 轴的缩放系数：
+模型矩阵 `M = T * R * S`。我们需要的是平移 `T`（世界中心）和缩放 `S`（尺寸），但要把旋转 `R` 扔掉。在 WGSL 中，从 `get_world_from_local(instance_index)` 拿到的 `model` 就是完整的模型矩阵。它的第 4 列 `(model[3][0], model[3][1], model[3][2])` 正是世界坐标系下的中心点[^5]。而第 1 列和第 2 列基向量的长度，分别对应 X 轴和 Y 轴的缩放系数：
 
 ```text
 scale_x = length( vec3(model[0][0], model[0][1], model[0][2]) )
 scale_y = length( vec3(model[1][0], model[1][1], model[1][2]) )
 ```
 
-相机的视角矩阵 `view.world_from_view` 同样关键。这个矩阵的列向量分别代表相机在世界空间中的 `right`、`up`、`forward` 基向量[^1][^10]。
+相机的视角矩阵 `view.world_from_view` 同样关键。这个矩阵的列向量分别代表相机在世界空间中的 `right`、`up`、`forward` 基向量[^1][^8]。
 
 有了这四个向量，球形广告牌的顶点世界坐标就是：
 
@@ -118,7 +118,7 @@ right = normalize( cross(world_up, front_flat) )
 up    = world_up
 ```
 
-这样广告牌只能在水平面内旋转，垂直方向永远直立[^6][^7]。
+这样广告牌只能在水平面内旋转，垂直方向永远直立[^5][^6]。
 
 下面是完整的顶点着色器。注释已经写得很细，直接复制就能用：
 
@@ -241,7 +241,7 @@ impl Material for BillboardMaterial {
 
 这里用的是纯 `Material` trait，而不是 `ExtendedMaterial<StandardMaterial, ...>`。这两者差别很大：
 
-`ExtendedMaterial` 的官方定位是在保留标准 PBR 光照的前提下注入自定义顶点或片元逻辑[^1][^4]。如果你需要广告牌受环境光、投射阴影、响应法线贴图，那它是最平滑的升级路径。但它的代价是复杂度：`StandardMaterial` 已经占用了绑定槽位 0–99，你的扩展只能从 100 开始；WGSL 侧必须 `import` PBR 的输入输出结构，按 Forward/Deferred 的不同路径处理光照[^1]。
+`ExtendedMaterial` 的官方定位是在保留标准 PBR 光照的前提下注入自定义顶点或片元逻辑[^1][^3]。如果你需要广告牌受环境光、投射阴影、响应法线贴图，那它是最平滑的升级路径。但它的代价是复杂度：`StandardMaterial` 已经占用了绑定槽位 0–99，你的扩展只能从 100 开始；WGSL 侧必须 `import` PBR 的输入输出结构，按 Forward/Deferred 的不同路径处理光照[^1]。
 
 而纯 `Material` 从零搭建管线，片元直接输出颜色，不参与 PBR 计算。对于粒子、光晕、火焰、UI 标记这类天然不需要光照的特效，这反而是更轻量的选择。我当前的需求是星空粒子和路牌，走 Unlit 完全够用。以后如果真的要在场景里放一个受 directional light 照射的金属告示牌，再迁移到 `ExtendedMaterial` 也不迟[^2]。
 
@@ -354,24 +354,22 @@ spawn_billboard_batch(
 
 不过有个限制：只要材质实例不同（比如不同的颜色、不同的纹理），Bevy 就分不了批。如果你的场景里有几百个广告牌，每个都贴不一样的纹理，实例化会失效。极致性能路线需要手动合批——要么用 Texture Atlas（把所有小图塞进一张大图），要么用材质数组/纹理数组，但这已经超出本文范围。
 
-实际体验上，Demo 里同时放了 17×17 的球形网格（289 个）加 24 个圆柱形（共 313 个），MacBook Air M2 稳 120fps，性能焦虑不大[^11]。
+实际体验上，Demo 里同时放了 17×17 的球形网格（289 个）加 24 个圆柱形（共 313 个），MacBook Air M2 稳 120fps，性能焦虑不大[^9]。
 
 后续如果要扩展，路径也很清晰：
-- 需要 PBR 光照和阴影 → 迁移到 `ExtendedMaterial`，保留标准材质的光照管线[^1][^4]。
+- 需要 PBR 光照和阴影 → 迁移到 `ExtendedMaterial`，保留标准材质的光照管线[^1][^3]。
 - 需要支持 Prepass/Deferred/MSAA → 补充对应的顶点着色器 pass[^2]。
 - 需要文字广告牌 → 参考 `bevy_mod_billboard` 的字体 atlas 构建逻辑。
 
 ---
 
 ## 参考
-
 [^1]: Bevy 官方 Extended Material 示例 — https://bevy.org/examples/shaders/extended-material
 [^2]: DEV Community — Custom Vertex Shading using ExtendedMaterial — https://dev.to/mikeam565/rust-game-dev-log-6-custom-vertex-shading-using-extendedmaterial-4312
-[^4]: GitHub PR #17269 — Extended material + custom vertex shader example — https://github.com/bevyengine/bevy/pull/17269
-[^5]: GitHub Issue #3688 — Billboard sprites (Sprites in a 3D camera) — https://github.com/bevyengine/bevy/issues/3688
-[^6]: 知乎专栏 — 【UnityShader】BillBoard 广告牌（3）— https://zhuanlan.zhihu.com/p/568974914
-[^7]: 星光与路人 — Unity 中广告牌效果实现 — https://www.starloong.top/2025/01/19/Unity%E4%B8%AD%E5%B9%BF%E5%91%8A%E7%89%8C%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/index.html
-[^8]: Bevy 官方 Shader Material 示例 — https://bevy.org/examples/shaders/shader-material
-[^9]: GitHub Issue #4294 — Mesh AABBs are never updated — https://github.com/bevyengine/bevy/issues/4294
-[^10]: WebGL2 Particle Spherical / Cylindrical Billboard (YouTube) — https://www.youtube.com/watch?v=AY73ZAEKqBM
-[^11]: GitHub — Bevy Billboard Demo（本文配套源码） — https://github.com/foxzool/billboard_demo
+[^3]: GitHub PR #17269 — Extended material + custom vertex shader example — https://github.com/bevyengine/bevy/pull/17269
+[^4]: GitHub Issue #3688 — Billboard sprites (Sprites in a 3D camera) — https://github.com/bevyengine/bevy/issues/3688
+[^5]: 知乎专栏 — 【UnityShader】BillBoard 广告牌（3）— https://zhuanlan.zhihu.com/p/568974914
+[^6]: 星光与路人 — Unity 中广告牌效果实现 — https://www.starloong.top/2025/01/19/Unity中广告牌效果实现/index.html
+[^7]: Bevy 官方 Shader Material 示例 — https://bevy.org/examples/shaders/shader-material
+[^8]: WebGL2 Particle Spherical / Cylindrical Billboard (YouTube) — https://www.youtube.com/watch?v=AY73ZAEKqBM
+[^9]: GitHub — Bevy Billboard Demo（本文配套源码） — https://github.com/foxzool/billboard_demo
