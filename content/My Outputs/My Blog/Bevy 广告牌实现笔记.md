@@ -348,7 +348,7 @@ spawn_billboard_batch(
 
 不过有个限制：只要材质实例不同（比如不同的颜色、不同的纹理），Bevy 就分不了批。如果你的场景里有几百个广告牌，每个都贴不一样的纹理，实例化会失效。极致性能路线需要手动合批——要么用 Texture Atlas（把所有小图塞进一张大图），要么用材质数组/纹理数组，但这已经超出本文范围。
 
-实际体验上，Demo 里同时放了 17×17 的球形网格（289 个）加 24 个圆柱形（共 313 个），MacBook Air M2 稳 120fps，性能焦虑不大。
+实际体验上，Demo 里同时放了 17×17 的球形网格（289 个）加 24 个圆柱形（共 313 个），MacBook Air M2 稳 120fps，性能焦虑不大[^11]。
 
 后续如果要扩展，路径也很清晰：
 - 需要 PBR 光照和阴影 → 迁移到 `ExtendedMaterial`，保留标准材质的光照管线[^1][^4]。
@@ -368,3 +368,4 @@ spawn_billboard_batch(
 [^8]: Bevy 官方 Shader Material 示例 — https://bevy.org/examples/shaders/shader-material
 [^9]: GitHub Issue #4294 — Mesh AABBs are never updated — https://github.com/bevyengine/bevy/issues/4294
 [^10]: WebGL2 Particle Spherical / Cylindrical Billboard (YouTube) — https://www.youtube.com/watch?v=AY73ZAEKqBM
+[^11]: GitHub — Bevy Billboard Demo（本文配套源码） — https://github.com/foxzool/billboard_demo
