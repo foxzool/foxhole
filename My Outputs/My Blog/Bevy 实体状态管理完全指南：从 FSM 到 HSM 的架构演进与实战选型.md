@@ -1,15 +1,16 @@
 ---
-Status: 🌲
+title: "Bevy 实体状态管理完全指南：从 FSM 到 HSM 的架构演进与实战选型"
+Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-08-29T11:44:47
+Created: 2025-08-29
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-08-29
 ---
-# Bevy 实体状态管理完全指南：从 FSM 到 HSM 的架构演进与实战选型
 
 ## 引言：为什么状态管理如此重要？
 
@@ -23,7 +24,7 @@ share: true
 
 Bevy 的状态管理存在两个截然不同的层次：
 
-**全局应用状态（bevy_state）**
+<strong>全局应用状态（bevy_state）</strong>
 
 ```rust
 #[derive(States, Default, Debug, Clone, PartialEq, Eq, Hash)]
@@ -345,7 +346,6 @@ StateMachine::new(Grounded)
 **推荐方案：bevy_gearbox + 可视化编辑器**
 
 ```yaml
-# boss_ai.scn.ron (由编辑器生成)
 StateMachine:
   Phase1_Aggressive:
     - MeleeCombo

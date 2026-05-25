@@ -1,15 +1,17 @@
 ---
-Status: 🌲
+Status: 🟩
 tags:
-  - note
+- note
+- output/blog
 Links:
-  - "[[Bevy MOC]]"
-Created: 2025-08-12T17:59:34
+- '[[Bevy MOC]]'
+Created: 2025-08-12
 BevyVersion:
-  - "0.16"
+- '0.16'
 share: true
+title: 结缘 Bevy 5 周年
 ---
-# 前言
+
 不知不觉，Bevy 已经迎来了[五周年生日](https://bevy.org/news/bevys-fifth-birthday/),  写一篇文章回顾一下我与Bevy的缘分.
 
 # 开始于2020年

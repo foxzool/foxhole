@@ -1,13 +1,15 @@
 ---
+title: "如何在Bevy中使用异步"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-03-04T18:44:26
+Created: 2025-03-04
 BevyVersion:
   - "0.15"
 share: true
+Finished: 2025-03-04
 ---
 ## 同步的ECS系统
 在Bevy ECS系统中的`System`都是同步的，通过系统调度器按照顺序并发执行系统。

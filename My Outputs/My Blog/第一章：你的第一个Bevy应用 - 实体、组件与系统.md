@@ -1,10 +1,11 @@
 ---
+title: "第一章：你的第一个Bevy应用 - 实体、组件与系统"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-06-20T16:42:51
+Created: 2025-06-20
 Finished: 2025-06-20
 BevyVersion: "0.16"
 share: true

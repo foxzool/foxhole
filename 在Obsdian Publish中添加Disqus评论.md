@@ -1,14 +1,16 @@
 ---
 Status: 🌲
 tags:
-  - note
+- note
 Links:
-  - "[[Obsidian]]"
-Created: 2024-11-10T19:28:46
+- '[[Obsidian]]'
+Created: 2024-11-10 19:28:46
 Source:
-  - https://garden.sparrow.zone/Integrating+Comments+in+Obsidian+Publish
-share: "true"
+- https://garden.sparrow.zone/Integrating+Comments+in+Obsidian+Publish
+share: 'true'
+title: 在 Obsidian Publish 中添加 Disqus 评论
 ---
+
 ## 前提
 已经设置好[自定义域名](https://help.obsidian.md/Obsidian+Publish/Set+up+a+custom+domain)
 ## 注册

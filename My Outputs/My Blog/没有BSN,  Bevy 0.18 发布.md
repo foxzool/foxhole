@@ -1,18 +1,21 @@
 ---
-Status: 🌿
+Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2026-01-14T13:40:14
+Created: 2026-01-14
+title: 没有BSN, Bevy 0.18 发布
+slug: bevy-0-18-release
+Finished: 2026-01-14
 BevyVersion:
   - "0.18"
 share: true
+cover: https://assets.zool.me/2026/01/51ed5b84b4fb1ec36a0154ef9aee3a7f.png
 ---
-# 没有BSN, Bevy 0.18 发布
 
 一句话总结: 常规的滚动发布, BSN要等0.19
-![image.png](https://assets.zool.me/2026/01/51ed5b84b4fb1ec36a0154ef9aee3a7f.png)
+![Bevy 0.18 发布封面图，展示大气遮挡与光照效果](https://assets.zool.me/2026/01/51ed5b84b4fb1ec36a0154ef9aee3a7f.png)
 
 ## 核心亮点与技术解读
 
@@ -50,11 +53,11 @@ Bevy 在以往版本中已支持各种渲染特效，但要快速定义一个全
 
 Bevy 的 UI 生态原本更偏底层，在 0.17 / 0.18 周期中不断补强。0.18 的更新重点包括：
 
-- **更多标准 UI 控件**（如 Popover、Menu、Radio 等）
+- **更多标准 UI 控件**（如 text_input、toggle_switch、radio 等）
     
 - **Bevy Feathers Widget: ColorPlane**，为工具类 UI（例如颜色选择器）提供专用组件
     
-- **自动方向导航（AutoDirectionalNavigation）**，允许 UI 通过键盘或手柄在元素之间自动导航，大幅改善游戏菜单与界面导航体验
+- <strong>自动方向导航（AutoDirectionalNavigation）</strong>，允许 UI 通过键盘或手柄在元素之间自动导航，大幅改善游戏菜单与界面导航体验
 
 这些增强不仅提升了 UI 的完整性，也将 Bevy 推向 “可做生产级菜单 / 工具界面”的方向。
 
@@ -64,7 +67,7 @@ Bevy 的 UI 生态原本更偏底层，在 0.17 / 0.18 周期中不断补强。0
 
 Bevy 0.18 在“工程可控性”上也做了很大功夫：
 
-- **Cargo Feature Collections**：预设的 **2d / 3d / ui** 特性集，让你按目标场景按需构建引擎依赖，而不再拉入全部体积代码。比如只做 UI 工具，这个特性集就能省下不需要的渲染模块。
+- **Cargo Feature Collections**：预设的高层场景特性集 **2d / 3d / ui**，让你按目标场景按需构建引擎依赖，而不再拉入全部体积代码。比如只做 UI 工具，这个特性集就能省下不需要的渲染模块。
     
 - **安全的多组件可变访问**：原本需要 unsafe 的多个组件可变访问现在有安全 API（带运行时检查），对那些 ECS 耦合逻辑复杂的系统特别有用。
 
@@ -74,4 +77,11 @@ Bevy 0.18 在“工程可控性”上也做了很大功夫：
 
 ### **6. 字体与文本支持的深化**
 
-文本系统变得更成熟：不仅支持字体粗细（Font Weight），还能启用 OpenType 特性（连字、斯拉德零等），让 UI 文本排版更具表现力。此外，**可拾取文本区域**让开发者可以实现像超链接那样的精细交互
+文本系统变得更成熟：不仅支持字体粗细（Font Weight），还能启用 OpenType 特性（连字、斜线零等），让 UI 文本排版更具表现力。此外，**Text 节点的 picking 响应区域**更精确了——只有实际有文本内容的区域才会触发交互，避免了空白处误触。
+
+---
+
+## 参考来源
+
+- [Bevy 0.18 发布公告](https://bevy.org/news/bevy-0-18/)
+- [Bevy 0.18 迁移指南](https://github.com/bevyengine/bevy/blob/main/_release-content/migration-guides/bevy-0-18-migration-guide.md)

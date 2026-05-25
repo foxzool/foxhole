@@ -1,17 +1,17 @@
 ---
+title: "Bevy制作拼图游戏 Day 2"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
   - "[[Bevy拼图游戏]]"
-Created: 2024-10-30T10:48:32
+Created: 2024-10-30
 share: true
 BevyVersion: "0.15"
 Collection: "[[拼图游戏]]"
 Finished: 2024-10-30
 ---
-# Bevy初始化
 本文撰写时，Bevy正处于0.15发布周期，所以下面的代码以0.15版本为准
 初始化项目
 ```toml
@@ -57,7 +57,6 @@ fn setup(mut commands: Commands) {
 
 ```
 
-# Schedule调度
 Bevy 是ECS(Entity-Component-System)架构。
 大部分的业务逻辑都是在System里实现
 ```rust
@@ -86,7 +85,6 @@ impl Default for MainScheduleOrder {
 可以看到Bevy启动时按顺序调用`PreStartup`、`Startup`、`PostStartup`三个Schedule一次， 然后每个Tick按顺序调用 `First`、`PreUpdate`、 `RunFixedMainLoop`、`Update`、`SpawnScene`、`PostUpdate`、`Last`.   
 我们的业务逻辑一般写在`Update`里。
 
-# 加载图片
 
 ```rust
 fn setup_generator(mut commands: Commands, asset_server: Res<AssetServer>) {  

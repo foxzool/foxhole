@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: "Bevy 的三种时间"
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2024-12-09T16:24:46
+Created: 2024-12-09
 BevyVersion: "0.15"
 share: true
+Finished: 2024-12-09
 ---
 ## 什么是FPS
 跑官方FPS诊断工具(FrameTimeDiagnosticsPlugin)时， 会看到下面的日志

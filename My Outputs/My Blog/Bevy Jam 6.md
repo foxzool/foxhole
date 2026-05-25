@@ -1,15 +1,16 @@
 ---
-Status: 🌲
+title: "Bevy Jam 6"
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-06-10T11:24:00
+Created: 2025-06-10
 BevyVersion: "0.16"
 share: true
+Finished: 2025-06-10
 ---
-# Bevy Jam #6
 第一次参加game jam, 记一下流水账.
 
 - itch.io 地址
@@ -42,7 +43,6 @@ share: true
 我这次在最后一天, 还做了双语切换
 ![image.png](https://assets.zool.me/2025/06/37cf4a7a29deb844dbf49d6ce4c607ee.png)
 
-# 后记
 这次参加Bevy Jam的目的主要是走一遍游戏发布流程, 评估一下AI辅助编程的效果.从结果来看, 目前Claude挺符合我的要求.
 
 目前来说, bevy_cli + bevy_new_2d , 可以快速上手2d游戏开发. 新的[热加载插件](https://github.com/TheBevyFlock/bevy_simple_subsecond_system) 可以加快编译速度.

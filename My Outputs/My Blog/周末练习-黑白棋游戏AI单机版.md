@@ -1,10 +1,11 @@
 ---
+title: "周末练习-黑白棋游戏AI单机版"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-07-04T16:28:13
+Created: 2025-07-04
 BevyVersion:
   - "0.16"
 share: true
@@ -14,11 +15,9 @@ Finished: 2025-07-25
 itch 在线游玩: https://foxzool.itch.io/reversi
 源码: https://github.com/foxzool/reversi
 
-# 游戏目标
 
 在游戏结束时获得最多的棋子。
 
-# 游戏玩法：
 
 - 玩家轮流放置棋子
 - 黑棋先手
@@ -27,7 +26,6 @@ itch 在线游玩: https://foxzool.itch.io/reversi
 - 有合法走法时必须走棋
 - 棋盘填满或无合法走法时游戏结束
 
-# 合法走法：
 
 • 必须至少夹住一个对手棋子
 

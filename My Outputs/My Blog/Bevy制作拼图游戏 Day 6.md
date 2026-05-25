@@ -1,10 +1,11 @@
 ---
+title: "Bevy制作拼图游戏 Day 6"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2024-11-12T15:59:56
+Created: 2024-11-12
 share: true
 BevyVersion:
   - "0.15"

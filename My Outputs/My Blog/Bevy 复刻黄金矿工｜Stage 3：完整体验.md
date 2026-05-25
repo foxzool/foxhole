@@ -4,7 +4,7 @@ tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2026-05-01T16:00:00
+Created: 2026-05-01
 BevyVersion:
   - "0.18"
 share: true
@@ -12,6 +12,7 @@ Collection: "[[黄金矿工]]"
 title: Bevy 复刻黄金矿工｜Stage 3：完整体验
 digest: Stage 3 补齐音频、存档、画面流转、UI 主题和商店系统，让黄金矿工从能玩变成完整游戏。
 cover: https://assets.zool.me/2026/05/b488e59193fe7d89257e18cab307c8b5.png
+Finished: 2026-05-01
 ---
 ![image.png](https://assets.zool.me/2026/05/b488e59193fe7d89257e18cab307c8b5.png)
 

@@ -1,7 +1,8 @@
 ---
+Status: 🟩
 tags: view/note
 Links: "[[My Home]]"
-Created: 2023-05-08T07:19:51
+Created: 2023-05-08
 ---
 
 ```button

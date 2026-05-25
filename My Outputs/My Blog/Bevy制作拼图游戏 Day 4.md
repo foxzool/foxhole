@@ -1,16 +1,16 @@
 ---
+title: "Bevy制作拼图游戏 Day 4"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2024-11-05T15:32:44
+Created: 2024-11-05
 BevyVersion: "0.15"
 share: true
 Collection: "[[拼图游戏]]"
 Finished: 2024-11-05
 ---
-# 拖拽拼图
 由于我们在上一步已经实现了`move_piece`的功能，所以我们同样只要在拖拽开始和结束时加入`MoveStart`组件
 ``` rust
 fn on_drag_start(  
@@ -45,7 +45,6 @@ fn on_drag_end(
     }  
 }
 ```
-# ESC 取消选择拼图
 由于目前Bevy还在rc阶段，Sprite Picking还有些问题，重叠时可能引起两次点击，所以加了一个键盘判断: 按下ESC时， 将所有选择的拼图放下。
 ``` rust
 fn cancel_all_move(  
@@ -60,7 +59,6 @@ fn cancel_all_move(
     }  
 }
 ```
-# 正确排序拼图高度
 bevy 2D坐标系里，z越高就越靠前. 
 我们初始生成拼图时，使用拼图序号作为Z轴高度。此时拼图各自的高度关系是正确的。
 当我们点击/拖动时，将Z改为200或者更大的值，保证移动的图块都在最上面。

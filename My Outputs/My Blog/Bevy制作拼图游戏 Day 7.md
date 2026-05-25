@@ -1,17 +1,17 @@
 ---
+title: "Bevy制作拼图游戏 Day 7"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2024-11-20T09:45:20
+Created: 2024-11-20
 BevyVersion:
   - "0.15"
 share: true
 Collection: "[[拼图游戏]]"
 Finished: 2024-11-20
 ---
-
 ## 制作动画效果
 静态的文字太无趣了，我们给title做一个移动加显影的效果。
 bevy 0.15 新增了动画系统， 我们将title改为Text2d, 然后移动它的坐标。

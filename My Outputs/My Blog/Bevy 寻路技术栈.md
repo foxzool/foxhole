@@ -1,15 +1,16 @@
 ---
-Status: 🌲
+title: "Bevy 寻路技术栈"
+Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-08-21T14:46:32
+Created: 2025-08-21
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-08-21
 ---
-# Bevy 寻路技术栈
 
 ## 1.0 执行摘要
 
@@ -349,9 +350,9 @@ landmass 提供四大功能：
 
 landmass 使用一个有趣的比喻：
 
-- **Archipelago（群岛）**：整个导航世界
-- **Island（岛屿）**：一块连通的可行走区域
-- **Agent（代理）**：在岛上移动的角色
+- <strong>Archipelago（群岛）</strong>：整个导航世界
+- <strong>Island（岛屿）</strong>：一块连通的可行走区域
+- <strong>Agent（代理）</strong>：在岛上移动的角色
 
 ```rust
 // 创建一个"群岛"
@@ -444,7 +445,6 @@ transform.translation += desired_velocity.velocity() * time.delta_seconds();
 **步骤1：设置依赖**
 
 ```toml
-# Cargo.toml
 [dependencies]
 bevy = "0.16"
 avian3d = "0.3"
@@ -539,7 +539,6 @@ fn setup(mut commands: Commands) {
 **改动很小**：
 
 ```toml
-# 只需要改 Cargo.toml
 bevy_rapier3d = "0.27"  # 替代 avian3d
 oxidized_navigation = { version = "0.12", features = ["rapier"] }  # 改 feature
 ```

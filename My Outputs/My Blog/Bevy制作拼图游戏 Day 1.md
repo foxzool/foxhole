@@ -4,7 +4,7 @@ tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2024-10-22T11:08:19
+Created: 2024-10-22
 title: Bevy制作拼图游戏 Day 1
 BevyVersion: "0.15"
 share: true
@@ -13,7 +13,6 @@ Finished: 2024-10-22
 ---
 使用bevy制作拼图游戏(jigsaw puzzle)
 - [x] 将图片按照参数分割成小图片 
-# 切割图片
 
 ## 思路分析
 网上搜索一番后，找到了一个[网页版拼图生成器](https://draradech.github.io/jigsaw/jigsaw.html)

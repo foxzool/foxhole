@@ -1,13 +1,15 @@
 ---
-Status: 🌲
+title: "Bevy 0.15版速览"
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2024-11-28T18:01:17
+Created: 2024-11-28
 BevyVersion: "0.15"
 share: true
+Finished: 2024-11-28
 ---
 Bevy 0.15 版已经正式发布。
 

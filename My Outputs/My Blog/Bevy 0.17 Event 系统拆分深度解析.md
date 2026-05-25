@@ -1,15 +1,16 @@
 ---
-Status: 🌲
+title: "Bevy 0.17 Event 系统拆分深度解析"
+Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-08-29T11:23:43
+Created: 2025-08-29
 BevyVersion:
   - "0.17"
 share: true
+Finished: 2025-08-29
 ---
-# Bevy 0.17 Event 系统拆分深度解析
 
 ## 核心改动：从统一到专精的架构演进
 

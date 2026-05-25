@@ -1,24 +1,21 @@
 ---
+title: "Bevy第三人称模版"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-05-30T15:37:42
+Created: 2025-05-30
 BevyVersion:
   - "0.16"
 share: true
 Finished: 2025-05-30
 ---
-
 网上闲逛发了一个新的bevy模版,支持第三人称
 [源码地址](https://github.com/olekspickle/bevy_new_third_person)
 
-# 安装方式
 ``` bash
-# 使用 cargo-generate
 cargo generate olekspickle/bevy_new_third_person
-# 使用 bevy_cli
 bevy new -t=https://github.com/olekspickle/bevy_new_third_person my_bevy_app
 ```
 

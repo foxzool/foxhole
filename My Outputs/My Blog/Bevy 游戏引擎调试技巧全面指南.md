@@ -1,15 +1,16 @@
 ---
-Status: 🌲
+Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-09-19T16:34:50
+Created: 2025-09-19
+title: "Bevy 游戏引擎调试技巧全面指南"
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-09-19
 ---
-# Bevy 游戏引擎调试技巧全面指南
 
 对于 Bevy 游戏引擎的初学者来说，掌握各种调试方法是提升开发效率的关键。本文将系统介绍 Bevy 0.16 中的多种调试手段，帮助您快速定位问题并优化性能。
 
@@ -43,7 +44,7 @@ fn example_system() {
 
 Bevy 默认只显示 `info!` 及以上级别的日志。调试时你会发现 `debug!` 和 `trace!` 的输出"消失"了，需要手动调整级别：
 
-**方法一：代码配置（推荐）**
+<strong>方法一：代码配置（推荐）</strong>
 
 ```rust
 use bevy::log::{LogPlugin, Level};
@@ -67,10 +68,8 @@ fn main() {
 **方法二：环境变量**
 
 ```bash
-# Linux/Mac
 RUST_LOG="warn,my_game=debug" cargo run
 
-# Windows PowerShell
 $env:RUST_LOG="warn,my_game=debug"; cargo run
 
 # Windows CMD

@@ -1,17 +1,17 @@
 ---
+title: "Bevy制作拼图游戏 Day 3"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
   - "[[Bevy拼图游戏]]"
-Created: 2024-11-01T11:36:20
+Created: 2024-11-01
 BevyVersion: "0.15"
 share: true
 Collection: "[[拼图游戏]]"
 Finished: 2024-11-01
 ---
-# 选中拼图
 Bevy 0.15开始提供点击插件，图片点击需要打开`bevy_sprite_picking_backend`的feature
 ```
 bevy = { version = "0.15.0-rc.2", features = ["wayland", "bevy_sprite_picking_backend"] }
@@ -66,7 +66,6 @@ fn on_click_piece(
 在点击拼图时, 给实体挂上/取消 `MoveStart` 组件，为后面移动拼图做准备。
 注意在上面我们再次点击取消选中拼图时， 给同一个拼图的Entity发送了一个`MoveEnd`的事件，此事件用来触发拼图放下的事件（磁吸拼图，判断拼图完成等）
 
-# 移动拼图
 在上一步点击拼图时，我们记录了点击的起始位置，这样我们用`move_piece`来计算移动距离
 ``` rust
 fn move_piece(  
@@ -90,7 +89,6 @@ fn move_piece(
 ```
 通过计算鼠标移动的相对距离，将此距离应用到拼图的坐标上， 移动拼图完成。
 
-# 磁吸拼图
 当拼图放下后，判断一下当前拼图和周围拼图的位置和排列关系，如果靠近到一定范围，且两者排列是顺序关系，将当前拼图位置移动到合适位置，将两个拼图拼起来。
 
 同时我们在Piece实体上再增加一个`MoveTogether`组件， 当一个组件移动时，相连的组件一起移动。

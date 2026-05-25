@@ -4,7 +4,7 @@ tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-11-21T15:51:03
+Created: 2025-11-21
 BevyVersion:
   - "0.18"
 share: true
@@ -12,6 +12,7 @@ Collection: "[[黄金矿工]]"
 title: Bevy 复刻黄金矿工｜Stage 2：这回总算真的能玩了
 digest: Stage 2 让黄金矿工真正能玩：钩子系统、碰撞抓取、地鼠 AI、TNT 爆炸、FX 特效、YAML 配关卡与商店，支持键鼠手柄。
 cover: https://v3b.fal.media/files/b/0a986cb2/TfCpXYGzym0-qTyDKf-YO_cef9a1c56d1145eba0a6029623cebc41.jpg
+Finished: 2025-11-21
 ---
 Stage 1 搭了个「壳」——菜单、坐标系、工程结构那些基础设施。Stage 2 就干一件事：让游戏真正能玩。
 
@@ -133,7 +134,6 @@ Stage 1 关卡数据硬编码在 Rust 里，Stage 2 全抽成 YAML，改数值�
 ### 2.1 YAML 结构
 
 ```yaml
-# assets/config/entities.yaml
 MiniGold:
     type: Basic
     mass: 2
@@ -179,7 +179,6 @@ TNT:
 ```
 
 ```yaml
-# assets/config/levels.yaml
 LDEBUG:
     type: LevelA
     entities:

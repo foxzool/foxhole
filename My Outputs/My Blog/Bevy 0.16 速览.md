@@ -1,18 +1,19 @@
 ---
-Status: 🌲
+title: "Bevy 0.16 速览"
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-04-25T10:13:13
+Created: 2025-04-25
 BevyVersion:
   - "0.16"
 share: true
+Finished: 2025-04-25
 ---
 Bevy 0.16 刚刚发布 [新闻](https://bevyengine.org/news/bevy-0-16/)
 
-# 主要特性
 
 * GPU 驱动渲染(GPU-Driven Rendering)
 ECS 关系(ECS Relationships)
@@ -26,7 +27,6 @@ ECS 关系(ECS Relationships)
 
 其中这次0.16更新, 我认为重要是下面几个特性
 
-# GPU 驱动渲染
 ## cpu 驱动渲染流程
 在0.16之前, Bevy 使用的是CPU 驱动渲染.
 1、从在CPU端通过相机的视锥体裁剪和遮挡裁剪, 获取所有要渲染的对象.
@@ -73,7 +73,6 @@ ECS 关系(ECS Relationships)
 * conditional compiliation
   条件编译, 可以根据传递给WESl的参数编译出不同的shader.
 
-# ECS 关系(Relation)
 千呼万唤始出来,没有Relation前,  实体与实体的之间一般关系用Parent/Children关系维护, 不然要自己实现一套机制来维护.
 Bevy 0.16 初步实现了 [`Relationship`](https://docs.rs/bevy/0.16/bevy/ecs/relationship/trait.Relationship.html),  解读一下官方示例
 ```rust

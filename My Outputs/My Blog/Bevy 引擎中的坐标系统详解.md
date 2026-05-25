@@ -1,15 +1,16 @@
 ---
-Status: 🌲
+title: "Bevy 引擎中的坐标系统详解"
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-05-12T18:09:26
+Created: 2025-05-12
 BevyVersion: "0.16"
 share: true
+Finished: 2025-05-12
 ---
-#  Bevy 坐标系统概览
 Bevy 与多数游戏引擎类似，采用了多种坐标系统，每种系统都为特定任务量身定制。本文将主要探讨以下几种系统：
 * 世界空间（World Space）
 * 局部空间（Local Space）
@@ -17,7 +18,6 @@ Bevy 与多数游戏引擎类似，采用了多种坐标系统，每种系统都
 * 屏幕/UI 空间（Screen/UI Space）
 * 视口（Viewport）
 * 归一化设备坐标（Normalized Device Coordinates, NDC）。
-# 全局世界坐标系统
 ![right-hand.png](https://assets.zool.me/2025/05/a8a92847416b256c57062c172317490d.png)
 
 Bevy 为其游戏世界采用的是**右手坐标系，Y 轴向上**。这是一个基础设定，影响着 3D 几何体和变换的解释方式。开发者可以通过“右手定则”来形象化轴向：通常，右手拇指指向 X 轴正方向，食指指向 Y 轴正方向，中指指向 Z 轴正方向。值得注意的是，此坐标系统在 2D 和 3D 场景中保持一致，这简化了在两者之间切换或共享逻辑的开发过程。
@@ -32,7 +32,6 @@ Bevy 为其游戏世界采用的是**右手坐标系，Y 轴向上**。这是一
 - 尽管 Y 轴始终指向上，但在 3D 环境中，**前进方向通常被认为是沿着 -Z 轴**。这是诸如 OpenGL 等系统中常见的约定。
 - 这意味着一个位于 (0,0,0) 并面向“前方”的物体，其视线将朝向 (0,0,-1)。
 - Bevy 的坐标系统与 Godot、Maya 和 OpenGL 相同，但与 Unity 相比，特别是在 Z 轴的朝向上有所不同。
-# 实体特定坐标系统：`Transform` 与 `GlobalTransform`
 
 ### 实体变换简介
 

@@ -1,12 +1,14 @@
 ---
-Status: 🌲
+title: "Bevy Entity 实体设计"
+Status: 🟩
 tags:
   - note
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2024-11-13T13:10:26
+Created: 2024-11-13
 share: true
+Finished: 2024-11-13
 ---
 ![[Bevy ECS 介绍]]
 

@@ -1,18 +1,19 @@
 ---
+title: "Bevy 复刻黄金矿工｜Stage 1：玩法规划与前期准备"
 Status: 🟩
 tags:
   - output/blog
 Links:
   - "[[Bevy MOC]]"
-Created: 2025-11-12T10:57:27
+Created: 2025-11-12
 BevyVersion:
   - "0.17"
 share: true
 Collection: "[[黄金矿工]]"
+Finished: 2025-11-12
 ---
-# Bevy 复刻黄金矿工｜Stage 1：玩法规划与前期准备
 
-本系列将使用 **Bevy 0.17** 来复刻经典游戏《黄金矿工》，目标同时支持 **Native** 与 **Web（WASM）** 运行。本篇为 Stage 1，重点放在：
+本系列将使用 **Bevy 0.17** 来复刻经典游戏《黄金矿工》，目标同时支持 **Native** 与 <strong>Web（WASM）</strong> 运行。本篇为 Stage 1，重点放在：
 
 - 明确项目整体目标与边界  
 - 拆解经典黄金矿工的核心玩法机制  
@@ -29,8 +30,8 @@ Collection: "[[黄金矿工]]"
 ### 1.1 核心目标
 
 - 使用 **Bevy 游戏引擎** 复刻经典《黄金矿工》  
-- 支持 **Native 桌面** 与 **Web（WASM）** 运行环境  
-- 采用 **Rust + ECS（实体组件系统）** 开发范式  
+- 支持 **Native 桌面** 与 <strong>Web（WASM）</strong> 运行环境  
+- 采用 <strong>Rust + ECS（实体组件系统）</strong> 开发范式  
 - 尽量保持玩法风格接近原版，同时保留一定扩展空间（如更多道具、关卡配置等）
 
 ### 1.2 Stage 1 的具体目标
@@ -93,7 +94,7 @@ Collection: "[[黄金矿工]]"
 
 本项目使用 GitHub 上的开源项目：
 
-**GoldMiner-Rebirth（MIT 协议）**  
+<strong>GoldMiner-Rebirth（MIT 协议）</strong>  
 仓库地址：<https://github.com/zzxzzk115/GoldMiner-Rebirth>
 
 该仓库提供：
@@ -200,7 +201,7 @@ bevy run web --open
 
 ### 5.2 Camera 视野缩放
 
-素材本身仍然是 320×240 尺寸，如果直接绘制在 1280×960 的窗口中，会显得非常小。因此需要通过 **正交投影（Orthographic Projection）** 来缩放视野。
+素材本身仍然是 320×240 尺寸，如果直接绘制在 1280×960 的窗口中，会显得非常小。因此需要通过 <strong>正交投影（Orthographic Projection）</strong> 来缩放视野。
 
 ```rust
 fn spawn_camera(mut commands: Commands) {

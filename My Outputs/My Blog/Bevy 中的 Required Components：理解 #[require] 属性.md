@@ -1,14 +1,17 @@
 ---
-Status: 🌲
+title: 'Bevy 中的 Required Components：理解 #[require] 属性'
+Status: 🟩
 tags:
-  - note
-  - output/blog
-Links: 
-Created: 2025-07-30T18:32:09
+- note
+- output/blog
+Links: null
+Created: 2025-07-30
 BevyVersion:
-  - "0.16"
-share: 
+- '0.16'
+Finished: 2025-07-30
+share: true
 ---
+
 ## 前言：为什么要学习 #[require]？
 
 Bevy 0.15 引入了 Required Components（必需组件）特性，这是自 Bevy 发布以来对 API 最深刻的改进之一。如果你是刚接触 Bevy 的开发者，理解这个特性将帮助你编写更简洁、更安全的代码。
@@ -573,3 +576,5 @@ Required Components 代表了 Bevy 在组件管理上的一次重大进化。它
 - 为其他开发者提供更好的 API
 
 记住，`#[require]` 不仅是一个技术特性，它代表了一种新的思维方式：从"实体有哪些组件"转向"组件如何相互依赖"。拥抱这种思维方式，你将能构建更可靠、更易维护的 Bevy 应用！
+
+[[Bevy MOC]]
